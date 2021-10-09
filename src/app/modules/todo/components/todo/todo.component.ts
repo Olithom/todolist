@@ -9,7 +9,7 @@ import { TodoDataService } from '../../services/todo-data.service';
 })
 export class TodoComponent {
 
-  newTache: Todo = new Todo();
+ 
   nbRestantes: number = 0;
 
   constructor(
@@ -23,12 +23,12 @@ export class TodoComponent {
     this.nbRestantes += tache.complete ? -1 : 1;
   }
 
-  addTache() {
-    this.todoDataService.addTodo(this.newTache);
-    if (!this.newTache.complete) {
+  onAjoutTache(newTache: Todo) {
+     this.todoDataService.addTodo(newTache);
+    if (!newTache.complete) {
       this.nbRestantes++;
     }
-    this.newTache = new Todo();
+    newTache = new Todo();
   }
 
   removeTache(tache: Todo) {

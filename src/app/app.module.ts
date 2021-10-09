@@ -10,11 +10,13 @@ import { TodoComponent } from './modules/todo/components/todo/todo.component';
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { TodoListHeaderComponent } from './modules/todo/components/todo-list-header/todo-list-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    TodoListHeaderComponent
   ],
   imports: [
     BrowserModule,

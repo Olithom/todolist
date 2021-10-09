@@ -1,9 +1,5 @@
 <section class="section-todos">
-    <header class="header">
-        <h2>To do :</h2>
-        <input class="new-todo" placeholder="Quelle tâche doit être ajoutée?" autofocus="" [(ngModel)]="newTache.titre"
-            (keyup.enter)="addTache()">
-    </header>
+    <app-todo-list-header (ajout)="onAjoutTache($event)"></app-todo-list-header>
     <section class="main" *ngIf="taches.length > 0">
         <mat-list>
             <mat-list-item *ngFor="let tache of taches" [class.complete]="tache.complete">
@@ -11,7 +7,7 @@
                     {{tache.id}}
                     <input class="toggle" type="checkbox" (click)="toggleTacheComplete(tache)"
                         [checked]="tache.complete">
-                    <label>{{tache.titre}}   </label>
+                    <label>{{tache.titre}}</label>
                     <button mat-flat-button [color]="tache.complete ? 'primary' : 'warn'" class="destroy" (click)="removeTache(tache)">Detruire</button>
                 </mat-card>
             </mat-list-item>
