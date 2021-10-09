@@ -1,0 +1,24 @@
+<section class="section-todos">
+    <header class="header">
+        <h2>To do :</h2>
+        <input class="new-todo" placeholder="Quelle tâche doit être ajoutée?" autofocus="" [(ngModel)]="newTache.titre"
+            (keyup.enter)="addTache()">
+    </header>
+    <section class="main" *ngIf="taches.length > 0">
+        <mat-list>
+            <mat-list-item *ngFor="let tache of taches" [class.complete]="tache.complete">
+                <mat-card class="mat-card-todo">
+                    {{tache.id}}
+                    <input class="toggle" type="checkbox" (click)="toggleTacheComplete(tache)"
+                        [checked]="tache.complete">
+                    <label>{{tache.titre}}   </label>
+                    <button mat-flat-button [color]="tache.complete ? 'primary' : 'warn'" class="destroy" (click)="removeTache(tache)">Detruire</button>
+                </mat-card>
+            </mat-list-item>
+        </mat-list>
+    </section>
+    <footer class="footer" *ngIf="taches.length > 0">
+        <span class="todo-count"><strong>{{nbRestantes}} / {{taches.length}}</strong> {{taches.length == 1 ? 'tache restante' : 'taches
+            restantes'}}</span>
+    </footer>
+</section>
